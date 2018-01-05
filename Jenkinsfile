@@ -7,6 +7,7 @@ pipeline {
 
    stages {
       stage('Build') {
+         agent { docker {image:maven}
          steps {
             sh 'mvn clean package'
          }
@@ -17,6 +18,14 @@ pipeline {
          }
          steps {
             echo "Run the development tests!"
+         }
+      }
+      stage('Masters Tests') {
+         when {
+            branch 'master'
+         }
+         steps {
+            echo "Run the master tests!"
          }
       }
 
