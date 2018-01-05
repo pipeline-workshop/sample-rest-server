@@ -7,7 +7,7 @@ pipeline {
 
    stages {
       stage('Build') {
-         agent { docker 'maven'} }
+         agent { docker 'maven'} 
          steps {
             sh 'mvn clean package'
          }
